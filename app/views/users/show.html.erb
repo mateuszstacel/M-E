@@ -1,0 +1,36 @@
+<%=render 'shared/navigation'%>
+<%= javascript_include_tag 'home' %>
+<%= javascript_include_tag 'users' %>
+
+<div id='vertical-profile-container'>
+<div class='profile-container'>
+<%= render 'users/profile_images_partials/profile_avatar' %>
+  <div id='profile-user-info'>
+    <h3 id="spot-show-username" style="padding-left:0;"><%= @user.username %></h3>
+    <%= render 'users/profile_images_partials/profile_diet_pref' %>
+  </div>
+
+  <div class='user-buttons'>
+    <% if current_user.id == @user.id %>
+      <%= render "users/profile_options_partials/current_user_profile_options" %>
+    <% else %>
+      <%= render "users/profile_options_partials/other_user_profile_options" %>
+    <% end %>
+  </div>
+</div>
+
+  <div id="profile-spots-container">
+    <%= render 'users/profile_spots_partials/profile_welcome_ms' %>
+    <div class='user-buttons'>
+      <%= render 'users/profile_options_partials/profile_spot_view_buttons' %>
+    </div>
+
+    <div id="UserFollowingPosts" style="display:block;">
+      <%= render 'users/profile_spots_partials/profile_followed_spots' %>
+    </div>
+
+    <div id="UserPosts" style="display:none;">
+      <%= render 'users/profile_spots_partials/profile_user_spots' %>
+    </div>
+  </div>
+</div>

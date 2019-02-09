@@ -1,0 +1,23 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <body class="home">
+    <div class="bkg-animated">
+      <div class="home-logo">M + E</div><br>
+      <div class="button-container">
+        <button class="home-buttons-signup" onclick="openForm()" id="signup-button">SIGN UP</button>
+        <button class="home-buttons-login" id="signin-button">LOGIN</button>
+      </div>
+    </div>
+
+  <div id="formGroupSignUp">
+    <%= render 'signup' %>
+  </div>
+
+  <div id="formGroupSignIn">
+    <%= render 'login' %>
+  </div>
+
+</body>
+</html>

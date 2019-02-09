@@ -1,0 +1,124 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+// #profile-avatar {
+//   height: 2vw;
+//   width: 2vw;
+//
+// }
+#vertical-profile-container
+{
+  display: flex;
+  margin: 3vw;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+}
+#profile-spots-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 3vw;
+
+}
+#profile-user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%
+}
+
+#card-total-profile {
+  width: 30vw;
+}
+
+#UserPosts, #UserFollowingPosts {
+  width: 68vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+#UserFollowingPosts {
+
+  display: flex;
+  justify-content: center;
+
+}
+.diet-profile {
+  width: 3vw;
+  height: 3vw;
+}
+
+.user-buttons {
+  padding: 10px;
+  padding-left: 0;
+}
+
+
+a.spot-title {
+  font-size: 30px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.spot-title-time {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.card-img-top {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.spot-followers {
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+}
+.spot-user-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: 10px;
+}
+
+.spot-user-option {
+  padding: 5px;
+}
+
+.popup-storm {
+  width: 60%;
+  text-align: center;
+  margin: auto;
+}
+
+.edit-user {
+  text-align: center;
+}
+
+.super-div {
+  width: 100%;
+  height: 100%;
+  background-color: #25988b;
+  text-align: center;
+}

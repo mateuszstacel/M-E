@@ -1,0 +1,31 @@
+
+<div class="spot-user-option">
+
+  <div id="show-user-buttons">
+    <div id="spotInfo">
+        <div id="userProfilePicture">
+          <% if @user.id == @spot.user_id %>
+              <%= link_to profile_path(@user.id) do %>
+                <% if @user.avatar.attached? %>
+                  <img id="index-avatar" style="border-radius: 10px;"><%= image_tag @user.avatar.variant(resize: "100x100!") %>></img>
+                <% else %>
+                <img src="/images/placeholder_img.jpg"style="height:6vw; width:6vw; border-radius: 10px;"></img>
+                <% end %>
+              <% end %>
+            <% end %>
+            <h3 id="spot-show-username"><%= @spot.username %></h3>
+        </div>
+    </div>
+      <% if current_user.id == @spot.user_id %>
+        <button id="show-edit-button"><%= link_to "Edit", edit_spot_path(@spot) %></button>
+        <button id="show-delete-button"><%= link_to "Delete", spot_path(@spot), method: :delete,data: {confirm: 'Delete your spot?'}%></button>
+    <% else %>
+        <%if @spot.followed_by?(current_user)%>
+          <%= render 'follows/spot_unfollow_option' %>
+        <% else %>
+          <%= render 'follows/spot_follow_option' %>
+        <% end %>
+      <% end %>
+
+  </div>
+</div>

@@ -1,0 +1,59 @@
+
+<%=render 'shared/navigation'%>
+<%= javascript_include_tag 'home' %>
+<%= javascript_include_tag 'spots' %>
+
+
+<div class="LunchSpotsContainer">
+<div id="formAddLuchSpot">
+  <div class="form text-color">
+    <h3 id='index-spot-title' style="padding: ">Add a Lunch spot!</h3>
+
+  <%= form_for :spot, url: spots_path do |f| %>
+      <% if @spot.errors.any? %>
+        <% @spot.errors.full_messages.each do |msg| %>
+          <div class="alert alert-danger"><%= msg %></div>
+        <% end %>
+      <% end %>
+
+    <iframe
+      id="map"
+      width="100%"
+      height="100%"
+      frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/search?key=<%=ENV['google_maps_api_key']%>
+      &q=restaurants+near+me" allowfullscreen>
+    </iframe>
+
+      <h3 class="new-spot-text" id='index-spot-location'>Find a lunch spot</h3>
+      <%= f.text_field(:spot, :autocomplete => :off, :class => 'form-control formwidth', id: 'show-form-enter') %>
+
+      <h3 class="new-spot-text" id='index-spot-location'>Pick a date</h3>
+      <%= f.text_field(:datestring, :autocomplete => :off, :id => "datepicker", :class => 'form-control formwidth') %>
+
+      <h3 class="new-spot-text" id='index-spot-location'>Pick a start and end time</h3>
+      <%= f.time_select(:time_start, autocomplete: 'off', class: "form-control") %>
+      <%= f.time_select(:time_end, autocomplete: 'off', :class => 'form-control') %>
+
+      <h3 class="new-spot-text" id='index-spot-location'>Pick a location</h3>
+
+      <%= f.text_field(:location, autocomplete: 'off', id: "location1", :class => 'form-control formwidth', placeholder: '') %>
+
+      <h3 class="new-spot-text" id='index-spot-location'>Write a description</h3>
+      <%= f.text_field(:info, :class => 'form-control formwidth', :autocomplete => :off, id: 'show-form-enter') %>
+
+      <%= f.submit( class: "submit-button", id: 'new-spot-button') %>
+  <% end %>
+
+</div>
+</div>
+</div>
+
+<style>
+  #new-spot-button {
+    background-color: #25988b;
+    margin: 20px;
+    color: white;
+  }
+
+  </style>

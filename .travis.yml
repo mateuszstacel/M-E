@@ -1,0 +1,26 @@
+language: ruby
+cache:
+- bundler
+rvm:
+- 2.5.3
+env:
+- DB=postgresql
+before_script:
+- psql -c 'create database my_app_test' -U postgres
+script:
+- bundle exec rake db:test:prepare
+- bundle exec rspec spec/
+after_script:
+- bundle exec rake coveralls:push
+before_install:
+- gem update --system
+- gem install bundler
+install:
+- bundle install
+deploy:
+  provider: heroku
+  api_key:
+    secure: pyyMWpWPOGifh8UYFjUZh1YPYGA0FfiIRpbcE+Yijb6mKKqxkdg9H3wCe1s3QWIePgTvvzHyIs2duyPmdsu2EpvEL7qt8tI+ZoOh0hLcQwUmx8c5v82OqiFMfITGJWN5pfBgIBMGuqi+uI8OGrYNnamtl+JY0+92/24Gk64PkkwuCRDafbuH7vKsFIcEgh9NPah9xsUPe+h3sqr95FYCVaLxF+Ytwvz9VRyFh3G9kf+D60CYqERPI4y7zKARXlhXAKhx9/kk/JpUvppsLojPkOyFjhzVzDd1NC1aJotYrOTeehNgEUUyzzA3sPgnhFXqgnmIVlzmMmp7d9SgTETC4fMM/MHSRFt2nrZyfoc+VGDXMQLn44gHXin2FHZx8dhHkEcCOnIOWAHkmLn5aGhbsw5eklKW3saGTjML+MQ04sAKBGK+XBypsEi8cWgLAL7Yph1RWKqHzRACIX9znpLdbY28ASbVjD7kVPnpgxxTk4cRvGmmpeKRTHHnjvRNbbvr0ypP90HGjAIoSPwncByASPpjmPe9vQhrgz5Q+pUJPy+GihohNQM2t2BLI2Cnz7FzXozh2UVIjIo4LdszVrecEwGB4Dv/Nnbwjd1I9yiAzvINF5RU0t3UiUrSF4lV4QFglVjkWyxQNV82bTz2olYZUKbdylv+KEUypJnxyKADMkk=
+  app: meet-andeat
+  on:
+    repo: AsadK47/Meet-and-Eat
